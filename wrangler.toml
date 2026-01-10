@@ -1,7 +1,7 @@
 name = "passgage-faq-bot"
 main = "src/index.ts"
 compatibility_date = "2024-01-10"
-node_compat = true
+compatibility_flags = ["nodejs_compat"]
 account_id = "db155e22a35b8781b3e826130e992da1"
 
 # Workers AI binding for embeddings
