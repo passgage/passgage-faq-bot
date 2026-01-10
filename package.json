@@ -1,0 +1,44 @@
+{
+  "name": "passgage-faq-bot",
+  "version": "1.0.0",
+  "description": "Semantic search FAQ chatbot using Cloudflare Workers AI and Vectorize",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "build:data": "tsx scripts/generate-faqs-json.ts",
+    "seed": "tsx scripts/seed-from-json.ts",
+    "format": "prettier --write \"src/**/*.{ts,js,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,js,json}\"",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "ai",
+    "vectorize",
+    "faq",
+    "chatbot",
+    "semantic-search"
+  ],
+  "author": "Passgage",
+  "license": "MIT",
+  "dependencies": {
+    "hono": "^4.6.14"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241218.0",
+    "@types/node": "^22.10.2",
+    "prettier": "^3.7.4",
+    "tsx": "^4.7.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "wrangler": "^3.99.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

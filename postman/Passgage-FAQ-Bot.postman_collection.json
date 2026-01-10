@@ -1,0 +1,471 @@
+{
+  "info": {
+    "name": "Passgage FAQ Bot API",
+    "description": "Semantic search FAQ chatbot using Cloudflare Workers AI and Vectorize",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "value",
+        "value": "{{API_KEY}}",
+        "type": "string"
+      },
+      {
+        "key": "key",
+        "value": "X-API-Key",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8787",
+      "type": "string"
+    },
+    {
+      "key": "API_KEY",
+      "value": "your-api-key-here",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Public Endpoints",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "health"]
+            },
+            "description": "Check if the service is healthy and running"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/health",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "health"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"healthy\",\n  \"service\": \"passgage-faq-bot\",\n  \"timestamp\": \"2026-01-10T12:00:00.000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Ask Question",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Şifremi nasıl değiştirebilirim?\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/ask",
+              "host": ["{{base_url}}"],
+              "path": ["api", "ask"]
+            },
+            "description": "Ask a question and get semantic search results from FAQ database"
+          },
+          "response": [
+            {
+              "name": "Success - Match Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question\": \"Şifremi nasıl değiştirebilirim?\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/ask",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "ask"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"answer\": \"Öncelikle smslerin spam klasörüne düşmediğinden emin olunuz. Eğer konuyla ilgili sorun devam ediyorsa Passgage ekibiyle iletişime geçiniz.\",\n  \"confidence\": 0.87,\n  \"matchedQuestion\": \"Şifre yenileme yaparken sms gelmiyor.\",\n  \"category\": \"giriş\",\n  \"suggestions\": [\n    {\n      \"question\": \"Şifre yenilemesi yaparken maile kod gelmiyor.\",\n      \"id\": \"faq-3\",\n      \"category\": \"giriş\"\n    }\n  ]\n}"
+            },
+            {
+              "name": "No Match Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question\": \"Completely unrelated question\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/ask",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "ask"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Sorunuzla eşleşen bir cevap bulunamadı. Lütfen destek ekibimizle iletişime geçin.\",\n  \"suggestions\": []\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Admin Endpoints",
+      "item": [
+        {
+          "name": "Create FAQ",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{API_KEY}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "X-API-Key",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Yeni soru örneği?\",\n  \"answer\": \"Cevap metni burada yer alır.\",\n  \"category\": \"genel\",\n  \"keywords\": [\"anahtar\", \"kelime\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/faq",
+              "host": ["{{base_url}}"],
+              "path": ["api", "faq"]
+            },
+            "description": "Create a new FAQ entry (Admin only - requires API key)"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{API_KEY}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question\": \"Yeni soru?\",\n  \"answer\": \"Cevap\",\n  \"category\": \"genel\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/faq",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "faq"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"id\": \"faq-1234567890\",\n  \"message\": \"FAQ başarıyla oluşturuldu.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete FAQ",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{API_KEY}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "X-API-Key",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/faq/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "faq", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "faq-1",
+                  "description": "FAQ ID to delete"
+                }
+              ]
+            },
+            "description": "Delete an existing FAQ entry (Admin only - requires API key)"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{API_KEY}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/faq/faq-1",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "faq", "faq-1"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"FAQ başarıyla silindi.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Bulk Seed FAQs",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{API_KEY}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "X-API-Key",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"faqs\": [\n    {\n      \"id\": \"faq-1\",\n      \"question\": \"Test sorusu 1?\",\n      \"answer\": \"Test cevap 1\",\n      \"category\": \"test\",\n      \"keywords\": [\"test\"]\n    },\n    {\n      \"id\": \"faq-2\",\n      \"question\": \"Test sorusu 2?\",\n      \"answer\": \"Test cevap 2\",\n      \"category\": \"test\",\n      \"keywords\": [\"test\"]\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/seed",
+              "host": ["{{base_url}}"],
+              "path": ["api", "seed"]
+            },
+            "description": "Bulk import FAQs from JSON (Admin only - requires API key)"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{API_KEY}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"faqs\": [...]\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/seed",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "seed"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"inserted\": 26,\n  \"failed\": 0,\n  \"message\": \"26 FAQ başarıyla eklendi.\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Turkish Examples",
+      "item": [
+        {
+          "name": "QR Kod Sorunu",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"QR kod okutamıyorum, ne yapmalıyım?\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/ask",
+              "host": ["{{base_url}}"],
+              "path": ["api", "ask"]
+            }
+          }
+        },
+        {
+          "name": "Vardiya Görüntüleme",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Vardiyamı nasıl görebilirim?\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/ask",
+              "host": ["{{base_url}}"],
+              "path": ["api", "ask"]
+            }
+          }
+        },
+        {
+          "name": "Şifre Sıfırlama",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Şifremi unuttum, nasıl değiştirebilirim?\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/ask",
+              "host": ["{{base_url}}"],
+              "path": ["api", "ask"]
+            }
+          }
+        },
+        {
+          "name": "Konum Hatası",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Konum doğrulanamadı hatası alıyorum\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/ask",
+              "host": ["{{base_url}}"],
+              "path": ["api", "ask"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

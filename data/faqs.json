@@ -1,0 +1,439 @@
+{
+  "_meta": {
+    "generated": "2026-01-10T07:44:09.652Z",
+    "source": "CSV files (Passgage Exairon.csv + Sorular - Yanıtlar ChatBot Mobil.csv)",
+    "note": "This file is auto-generated. DO NOT edit manually. Edit CSV files and run: npm run build:data",
+    "totalFAQs": 40
+  },
+  "faqs": [
+    {
+      "id": "faq-csv1-001",
+      "question": "Kullanıcı Bulunamadı.",
+      "answer": "Sistemde kayıtlı telefon numaranızın veya mail adresinizin bulunmaması veya güncel olmamasından kaynaklanmaktadır.\n\nBilgilerinizin güncel olduğundan emin olduktan sonra tekrar deneyiniz, eğer sorun hala devam ediyorsa konuyla ilgili insan kaynaklarınızla iletişime geçiniz.",
+      "category": "giriş",
+      "keywords": [
+        "kullanıcı",
+        "bulunamadı"
+      ]
+    },
+    {
+      "id": "faq-csv1-002",
+      "question": "Şifre yenileme yaparken sms gelmiyor.",
+      "answer": "Öncelikle smslerin spam klasörüne düşmediğinden emin olunuz.\n\nYaşamış olduğunuz sorunu, size yardımcı olabilmesi adına ilgili ekibe iletiyorum.",
+      "category": "giriş",
+      "keywords": [
+        "şifre",
+        "yenileme",
+        "yaparken",
+        "gelmiyor"
+      ]
+    },
+    {
+      "id": "faq-csv1-003",
+      "question": "Şifre yenilemesi yaparken maile kod gelmiyor.",
+      "answer": "Maillerin spam klasörüne düşmediğinden emin olunuz.\n\nYaşamış olduğunuz sorunu, size yardımcı olabilmesi adına ilgili ekibe iletiyorum.",
+      "category": "giriş",
+      "keywords": [
+        "şifre",
+        "yenilemesi",
+        "yaparken",
+        "maile",
+        "gelmiyor"
+      ]
+    },
+    {
+      "id": "faq-csv1-004",
+      "question": "Konum Doğrulanamadı hatası almaktayım.",
+      "answer": "Telefonunuzun konum bilgilerinin, okutmayı denediğiniz QR kod içerisine tanımlanmış olan konumun ve mesafenin eşleşmemesinden kaynaklanmaktadır.\n\n\"Şubede bu uyarıyı alan çok fazla kullanıcı yoksa lütfen şu adımları izleyin\n\ninternet bağlantınızı değiştirmeyi veya kapatıp açmayı, telefonunuzu uçak moduna alıp tekrar normal moda almayı, Wifi özelliğini açmayı (herhangi bir wifi ağına bağlanmanız gerekmemektedir.) deneyin.\"",
+      "category": "geçiş-kontrol",
+      "keywords": [
+        "konum",
+        "doğrulanamadı",
+        "hatası",
+        "almaktayım"
+      ]
+    },
+    {
+      "id": "faq-csv1-005",
+      "question": "Geçersiz Qr hatası almaktayım.",
+      "answer": "Passgage harici bir QR'a okutma işlemi yapıldığında veya ilgili şirkete henüz tanımlanmamış bir Passgage QR'ı okutmaya çalışıldığında karşılaşılmaktadır.\n\nOkutmayı denediğiniz QR'ın bir Passgage QR'ı olduğundan emin olunuz.\n\nEğer sorun hala devam ediyorsa lütfen yetkili biriminiz ile iletişime geçiniz.",
+      "category": "geçiş-kontrol",
+      "keywords": [
+        "geçersiz",
+        "hatası",
+        "almaktayım"
+      ]
+    },
+    {
+      "id": "faq-csv1-006",
+      "question": "Buraya Girmeye Yetkiniz Yoktur uyarısı almaktayım.",
+      "answer": "Okutmak istediğiniz QR için yetkiniz bulunmamasından kaynaklanmaktadır.\n\nKonuyla ilgili yetkili biriminiz ile iletişime geçmeniz gerekmektedir.",
+      "category": "geçiş-kontrol",
+      "keywords": [
+        "buraya",
+        "girmeye",
+        "yetkiniz",
+        "yoktur",
+        "uyarısı"
+      ]
+    },
+    {
+      "id": "faq-csv1-007",
+      "question": "Qr okuturken titreme ve/veya sonuç alamama.",
+      "answer": "Passgage'in konum erişimine izin verilmemesinden kaynaklanmaktadır.\n\nPassgage uygulamasının konum bilgilerinize erişebilmesi için gerekli izinleri vermeniz gerekmektedir. Telefonunuzda Ayarlar>Uygulamalar>Passgage>Konum kısmından ''Konum bilgilerine erişim izni ver'' seçeneğinin aktif olup olmadığını kontrol ediniz. Konum bilginiz güvenlik önlemleri nedeniyle yalnızca QR okutması gerçekleştirdiğiniz esnada kontrol edilmektedir.",
+      "category": "geçiş-kontrol",
+      "keywords": [
+        "okuturken",
+        "titreme",
+        "ve/veya",
+        "sonuç",
+        "alamama"
+      ]
+    },
+    {
+      "id": "faq-csv1-008",
+      "question": "Vardiyamı göremiyorum.",
+      "answer": "Onaylanmamış vardiyalar çalışanlar tarafından görüntülenememektedir. Çalışanların üzerine atanan vardiyaları görüntüleyebilmesi için planlanan vardiyaların onaylanması gerekmektedir.\n\nYaşamış olduğunuz sorunu, size yardımcı olabilmesi adına ilgili ekibe iletiyorum.",
+      "category": "geçiş-kontrol",
+      "keywords": [
+        "vardiyamı",
+        "göremiyorum"
+      ]
+    },
+    {
+      "id": "faq-csv1-009",
+      "question": "Personellerimin bir kısmını ya da hiçbirini göremiyorum.",
+      "answer": "Vardiya modülünde yalnızca kendinize bağlı olan çalışanları ve yetkili olduğunuz şubelerdeki çalışanları görüntüleyebilirsiniz. Bu konu ile ilgili lütfen yetkili biriminiz ile iletişime geçiniz.",
+      "category": "geçiş-kontrol",
+      "keywords": [
+        "personellerimin",
+        "kısmını",
+        "hiçbirini",
+        "göremiyorum"
+      ]
+    },
+    {
+      "id": "faq-csv1-010",
+      "question": "Vardiya oluşturamıyorum ya da onaylayamıyorum.",
+      "answer": "Vardiya onaylama ve oluşturma işlemleri yalnızca yetkili kullanıcılar tarafından yapılabilmektedir. Bu konu ile ilgili lütfen yetkili biriminiz ile iletişime geçiniz.",
+      "category": "geçiş-kontrol",
+      "keywords": [
+        "vardiya",
+        "oluşturamıyorum",
+        "onaylayamıyorum"
+      ]
+    },
+    {
+      "id": "faq-csv1-011",
+      "question": "Aradığım vardiyayı bulamıyorum.",
+      "answer": "Vardiya tanımlamaları yetkili biriminiz tarafından yapılmaktadır. Lütfen bu konu ile ilgili yetkili biriminize başvurunuz.",
+      "category": "geçiş-kontrol",
+      "keywords": [
+        "aradığım",
+        "vardiyayı",
+        "bulamıyorum"
+      ]
+    },
+    {
+      "id": "faq-csv1-012",
+      "question": "Check-in yapabileceğim bir yer göremiyorum.",
+      "answer": "Bulunduğunuz bölgede check-in yapabileceğiniz bir konum bulunmamasından veya konumunuzun stabil olmamasından kaynaklanabilir. Lütfen internet bağlantınızı değiştirmeyi veya kapatıp açmayı, telefonunuzu uçak moduna alıp tekrar normal moda almayı, Wifi özelliğini açmayı (herhangi bir wifi ağına bağlanmanız gerekmemektedir.) deneyin.\n\nİlgili yönergeleri uygulamanıza rağmen hala uyarıyı almaya devam ediyorsanız lütfen insan kaynaklarınız ile iletişime geçiniz.",
+      "category": "geçiş-kontrol",
+      "keywords": [
+        "check-in",
+        "yapabileceğim",
+        "göremiyorum"
+      ]
+    },
+    {
+      "id": "faq-csv1-013",
+      "question": "Paylaşımımı göremiyorum.",
+      "answer": "Paylaşımlar ilgili onay sürecinden geçtikten sonra görüntülenmektedir. Lütfen paylaşımınızın onaylanmasını bekleyiniz.",
+      "category": "geçiş-kontrol",
+      "keywords": [
+        "paylaşımımı",
+        "göremiyorum"
+      ]
+    },
+    {
+      "id": "faq-csv1-014",
+      "question": "Paylaşım yapamıyorum.",
+      "answer": "Paylaşımlar yalnızca yetkili kullanıcılar tarafından yapılabilmektedirr. Konuyla ilgili yetkili biriminiz ile iletişime geçebilirsiniz.",
+      "category": "geçiş-kontrol",
+      "keywords": [
+        "paylaşım",
+        "yapamıyorum"
+      ]
+    },
+    {
+      "id": "faq-csv1-015",
+      "question": "PG Sosyal nedir?",
+      "answer": "PG Sosyal modülü sayesinde şirketiniz için oluşturulan, metin, fotoğraf ve video paylaşımı yapmanızı sağlayan kapalı devre bir sosyal medya platformudur. PG Sosyal ile başarılarınızı şirketinizin yönetimdeki en üst seviyesinden en alt seviyesine tüm ekip arkadaşlarınızla paylaşın.",
+      "category": "modüller",
+      "keywords": [
+        "sosyal"
+      ]
+    },
+    {
+      "id": "faq-csv1-016",
+      "question": "Etik Hat nedir?",
+      "answer": "Etik hat modülü sayesinde şirket içinde yaşadığınız veya şahit olduğunuz olumsuz olayları anonim olarak ilgili birimlere iletin.",
+      "category": "modüller",
+      "keywords": [
+        "etik"
+      ]
+    },
+    {
+      "id": "faq-csv1-017",
+      "question": "Geri Bildirim nedir?",
+      "answer": "Geri bildirim modülü sayesinde iş süreçleri veya kişiler hakkında geri bildirimlerde bulunun. Bildirimlerinizi bildirimlerim sekmesi üzerinden takip ederek süreç hakkında bilgi sahibi olun.",
+      "category": "modüller",
+      "keywords": [
+        "geri",
+        "bildirim"
+      ]
+    },
+    {
+      "id": "faq-csv1-018",
+      "question": "Kariyer Fırsatı nedir?",
+      "answer": "Şirket içindeki yeni kariyer fırsatlarını bu modül üzerinden görüntüleyin. Yeni pozisyonları keşfedin veya arkadaşlarınıza önerin.",
+      "category": "modüller",
+      "keywords": [
+        "kariyer",
+        "fırsatı"
+      ]
+    },
+    {
+      "id": "faq-csv1-019",
+      "question": "Performans Takibi nedir?",
+      "answer": "Performans takibi modülü sayesinde mobil uygulama ile görev atama, izleme ve tamamlama süreçlerini gerçek zamanlı takip ederek iş akışlarınızı kontrol edin.",
+      "category": "modüller",
+      "keywords": [
+        "performans",
+        "takibi"
+      ]
+    },
+    {
+      "id": "faq-csv1-020",
+      "question": "Terminal nedir?",
+      "answer": "Terminal modülü sayesinde NFC kart ile telefonunuz olmadan giriş çıkış işlemlerini gerçekleştirin.",
+      "category": "modüller",
+      "keywords": [
+        "terminal"
+      ]
+    },
+    {
+      "id": "faq-csv1-021",
+      "question": "Onaylarım nedir?",
+      "answer": "Onaylarım modülü sayesinde tarafınıza atanmış bekleyen talepleri takip ederek onay ve red işlemlerini kolaylıkla yönetin.",
+      "category": "modüller",
+      "keywords": [
+        "onaylarım"
+      ]
+    },
+    {
+      "id": "faq-csv1-022",
+      "question": "Buradayım nedir?",
+      "answer": "Buradayım modülü sayesinde QR kod olmaksızın uygulama üzerinden belirtilen konumlarda giriş-çıkış işemlerinizi gerçekleştirin.",
+      "category": "modüller",
+      "keywords": [
+        "buradayım"
+      ]
+    },
+    {
+      "id": "faq-csv1-023",
+      "question": "Taleplerim nedir?",
+      "answer": "Taleplerim modülü sayesinde izin, rotasyon gibi taleplerinizi kolayca gerçekleştirin ve takip edin.",
+      "category": "modüller",
+      "keywords": [
+        "taleplerim"
+      ]
+    },
+    {
+      "id": "faq-csv1-024",
+      "question": "PDKS nedir?",
+      "answer": "PDKS modülü sayesinde personel devamlılığını takip ederek giriş-çıkış hareketlerinizi mobil uygulama aracılığıyla anlık görüntüleyin. Aynı panel içerisinde son hareketlerini, izin vb. detaylı bilgileri görüntüleyin ve düzenlemeler yapın.",
+      "category": "modüller",
+      "keywords": [
+        "pdks"
+      ]
+    },
+    {
+      "id": "faq-csv1-025",
+      "question": "Anket nedir?",
+      "answer": "Anket modülü sayesinde size atanmış anketlere erişin, ilgili konulardaki görüş ve düşüncelerinizi belirtin.",
+      "category": "modüller",
+      "keywords": [
+        "anket"
+      ]
+    },
+    {
+      "id": "faq-csv1-026",
+      "question": "Vardiya nedir?",
+      "answer": "Vardiya modülü sayesinde size atanmış vardiya bilgilerini anlık olarak görüntüleyin. Olası değişikliklerde, vardiyaya geç kalma veya vardiyadan geç çıkma durumunda anlık olarak bildirim alın.",
+      "category": "modüller",
+      "keywords": [
+        "vardiya"
+      ]
+    },
+    {
+      "id": "faq-csv2-001",
+      "question": "Kullanıcı Bulunamadı.",
+      "answer": "Sistemde kayıtlı telefon numaranızın veya mail adresinizin bulunmaması veya güncel olmamasından kaynaklanmaktadır. Konuyla ilgili insan kaynaklarınızla görüşmeniz gerekmektedir. Bilgilerinizin güncel olduğundan eminseniz sorunun devam etmesi durumunda lütfen Passgage ekibiyle iletişime geçiniz.",
+      "category": "giriş",
+      "keywords": [
+        "kullanıcı",
+        "bulunamadı"
+      ]
+    },
+    {
+      "id": "faq-csv2-002",
+      "question": "Şifre yenileme yaparken sms gelmiyor.",
+      "answer": "Öncelikle smslerin spam klasörüne düşmediğinden emin olunuz. Eğer konuyla ilgili sorun devam ediyorsa Passgage ekibiyle iletişime geçiniz.",
+      "category": "giriş",
+      "keywords": [
+        "şifre",
+        "yenileme",
+        "yaparken",
+        "gelmiyor"
+      ]
+    },
+    {
+      "id": "faq-csv2-003",
+      "question": "Şifre yenilemesi yaparken maile kod gelmiyor.",
+      "answer": "Maillerin spam klasörüne düşmediğinden emin olunuz. Eğer konuyla ilgili sorun devam ediyorsa Passgage ekibiyle iletişime geçiniz.",
+      "category": "giriş",
+      "keywords": [
+        "şifre",
+        "yenilemesi",
+        "yaparken",
+        "maile",
+        "gelmiyor"
+      ]
+    },
+    {
+      "id": "faq-csv2-004",
+      "question": "Konum Doğrulanamadı hatası almaktayım.",
+      "answer": "Telefonunuzun konum bilgilerinin, okutmayı denediğiniz QR kod içerisine tanımlanmış olan konumun ve mesafenin eşleşmemesinden kaynaklanmaktadır. \"Şubede bu sorunu yaşayan çok fazla kişi yoksa lütfen şu adımları izleyin",
+      "category": "giriş",
+      "keywords": [
+        "konum",
+        "doğrulanamadı",
+        "hatası",
+        "almaktayım"
+      ]
+    },
+    {
+      "id": "faq-csv2-005",
+      "question": "Geçersiz Qr hatası almaktayım.",
+      "answer": "Passgage harici bir QR'a okutma işlemi yapıldığında veya ilgili şirkete henüz tanımlanmamış bir Passgage QR'ı okutmaya çalışıldığında karşılaşılmaktadır. Okutmayı denediğiniz QR'ın bir Passgage QR'ı olduğundan emin olunuz. Eğer sorun hala devam ediyorsa lütfen yetkili biriminiz ile iletişime geçiniz.",
+      "category": "giriş",
+      "keywords": [
+        "geçersiz",
+        "hatası",
+        "almaktayım"
+      ]
+    },
+    {
+      "id": "faq-csv2-006",
+      "question": "Buraya Girmeye Yetkiniz Yoktur uyarısı almaktayım.",
+      "answer": "Okutmak istediğiniz QR için okutma yetkisi bulunmamasından kaynaklanır. Konuyla ilgili yetkili biriminiz ile iletişime geçmeniz gerekmektedir.",
+      "category": "giriş",
+      "keywords": [
+        "buraya",
+        "girmeye",
+        "yetkiniz",
+        "yoktur",
+        "uyarısı"
+      ]
+    },
+    {
+      "id": "faq-csv2-007",
+      "question": "Qr okuturken titreme ve/veya sonuç alamama.",
+      "answer": "Uygulamaya, konum erişimine izin verilmemesinden kaynaklanır. Passgage uygulamasını kullanırken konum izni vermeniz gerekmektedir. Telefonunuzda Ayarlar>Uygulamalar>Passgage>Konum kısmından ''Konum bilgilerine erişim izni ver'' seçeneğinin aktif olup olmadığını kontrol ediniz.",
+      "category": "giriş",
+      "keywords": [
+        "okuturken",
+        "titreme",
+        "ve/veya",
+        "sonuç",
+        "alamama"
+      ]
+    },
+    {
+      "id": "faq-csv2-008",
+      "question": "Vardiyamı göremiyorum.",
+      "answer": "Onaylanmamış vardiyalar çalışanlar tarafından görüntülenememektedir. Çalışanların üzerine atanan vardiyaları görüntüleyebilmesi için planlanan vardiyaların onaylanması gerekmektedir.",
+      "category": "giriş",
+      "keywords": [
+        "vardiyamı",
+        "göremiyorum"
+      ]
+    },
+    {
+      "id": "faq-csv2-009",
+      "question": "Personellerimin bir kısmını ya da hiçbirini göremiyorum.",
+      "answer": "Vardiya modülünde yalnızca kendinize bağlı olan çalışanları ve yetkili olduğunuz şubelerdeki çalışanları görüntüleyebilirsiniz. Bu konu ile ilgili lütfen yetkili biriminiz ile iletişime geçiniz.",
+      "category": "giriş",
+      "keywords": [
+        "personellerimin",
+        "kısmını",
+        "hiçbirini",
+        "göremiyorum"
+      ]
+    },
+    {
+      "id": "faq-csv2-010",
+      "question": "Vardiya oluşturamıyorum ya da onaylayamıyorum.",
+      "answer": "Vardiya onaylama ve oluşturma işlemleri yalnızca yetkili kullanıcılar tarafından yapılabilmektedir. Bu konu ile ilgili lütfen yetkili biriminiz ile iletişime geçiniz.",
+      "category": "giriş",
+      "keywords": [
+        "vardiya",
+        "oluşturamıyorum",
+        "onaylayamıyorum"
+      ]
+    },
+    {
+      "id": "faq-csv2-011",
+      "question": "Aradığım vardiyayı bulamıyorum.",
+      "answer": "Vardiya tanımlamaları yetkili biriminiz tarafından yapılmaktadır. Lütfen bu konu için yetkili biriminize başvurunuz.",
+      "category": "giriş",
+      "keywords": [
+        "aradığım",
+        "vardiyayı",
+        "bulamıyorum"
+      ]
+    },
+    {
+      "id": "faq-csv2-012",
+      "question": "Check-in yapabileceğim bir yer göremiyorum.",
+      "answer": "Bulunduğunuz bölgede check-in yapabileceğiniz bir konum bulunmamaktadır.",
+      "category": "giriş",
+      "keywords": [
+        "check-in",
+        "yapabileceğim",
+        "göremiyorum"
+      ]
+    },
+    {
+      "id": "faq-csv2-013",
+      "question": "Paylaşımımı göremiyorum.",
+      "answer": "Paylaşımlar ilgili onay sürecinden geçtikten sonra görüntülenmektedir. Lütfen paylaşımınızın onaylanmasını bekleyiniz.",
+      "category": "giriş",
+      "keywords": [
+        "paylaşımımı",
+        "göremiyorum"
+      ]
+    },
+    {
+      "id": "faq-csv2-014",
+      "question": "Paylaşım yapamıyorum.",
+      "answer": "Paylaşım yapma yetkiniz bulunmamaktadır. Konuyla ilgili yetkili biriminiz ile iletişime geçebilirsiniz.",
+      "category": "giriş",
+      "keywords": [
+        "paylaşım",
+        "yapamıyorum"
+      ]
+    }
+  ]
+}

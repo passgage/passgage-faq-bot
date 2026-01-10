@@ -1,0 +1,43 @@
+name = "passgage-faq-bot"
+main = "src/index.ts"
+compatibility_date = "2024-01-10"
+node_compat = true
+account_id = "db155e22a35b8781b3e826130e992da1"
+
+# Workers AI binding for embeddings
+[ai]
+binding = "AI"
+
+# Vectorize binding for vector database
+[[vectorize]]
+binding = "VECTORIZE"
+index_name = "faq-index"
+
+# Environment variables
+[vars]
+SIMILARITY_THRESHOLD = "0.7"
+TOP_K = "3"
+MAX_FAQs_RETURN = "5"
+ALLOWED_ORIGINS = "*"
+RATE_LIMIT_MAX = "60"
+
+# Optional: KV namespace for rate limiting
+# Uncomment to enable rate limiting
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT_KV"
+# id = "your-kv-namespace-id"
+
+# Production environment
+[env.production]
+name = "passgage-faq-bot-production"
+
+[env.production.vars]
+SIMILARITY_THRESHOLD = "0.75"
+TOP_K = "5"
+# Set your allowed origins in production
+# ALLOWED_ORIGINS = "https://passgage.com,https://app.passgage.com"
+RATE_LIMIT_MAX = "100"
+
+# Important: Set API keys as secrets (not in wrangler.toml!)
+# wrangler secret put PUBLIC_API_KEYS --env production
+# wrangler secret put ADMIN_API_KEYS --env production
