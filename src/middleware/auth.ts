@@ -198,14 +198,14 @@ export async function corsMiddleware(
   c: Context<{ Bindings: Env }>,
   next: () => Promise<void>
 ): Promise<Response | void> {
-  const origin = c.req.header('Origin');
-  const allowedOrigins = c.env.ALLOWED_ORIGINS?.split(',') || ['*'];
+  const origin = c.req.header('Origin') || '';
+  const allowedOrigins = c.env.ALLOWED_ORIGINS?.split(',').map(o => o.trim()) || ['*'];
 
   // Check if origin is allowed
-  if (
-    allowedOrigins.includes('*') ||
-    (origin && allowedOrigins.includes(origin))
-  ) {
+  const isAllowed = allowedOrigins.includes('*') || allowedOrigins.includes(origin);
+
+  if (isAllowed) {
+    // Set CORS headers
     c.header('Access-Control-Allow-Origin', origin || '*');
     c.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     c.header(
@@ -213,11 +213,17 @@ export async function corsMiddleware(
       'Content-Type, X-API-Key, Authorization'
     );
     c.header('Access-Control-Max-Age', '86400');
+    c.header('Access-Control-Allow-Credentials', 'true');
   }
 
   // Handle preflight
   if (c.req.method === 'OPTIONS') {
-    return new Response(null, { status: 204 });
+    return c.body(null, 204, {
+      'Access-Control-Allow-Origin': origin || '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, X-API-Key, Authorization',
+      'Access-Control-Max-Age': '86400',
+    });
   }
 
   await next();

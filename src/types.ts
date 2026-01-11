@@ -28,6 +28,8 @@ export interface AskResponse {
   category?: string;
   suggestions?: FAQSuggestion[];
   message?: string;
+  fuzzy?: boolean; // NEW: Indicates fuzzy match (confidence between fuzzy and primary thresholds)
+  suggestedQuestion?: string; // NEW: For "Did you mean?" scenarios
 }
 
 export interface FAQSuggestion {
@@ -67,6 +69,9 @@ export interface Env {
   TOP_K: string;
   MAX_FAQs_RETURN: string;
 
+  // NEW: Fuzzy matching threshold
+  FUZZY_THRESHOLD?: string; // Minimum score for "Did you mean?" (default: 0.60)
+
   // Security - Two-tier API keys
   PUBLIC_API_KEYS?: string; // Comma-separated list of public API keys (for /api/ask)
   ADMIN_API_KEYS?: string; // Comma-separated list of admin API keys (for CRUD operations)
@@ -78,6 +83,12 @@ export interface Env {
   // Rate limiting (optional KV namespace)
   RATE_LIMIT_KV?: KVNamespace;
   RATE_LIMIT_MAX?: string; // Max requests per window (default: 60)
+
+  // NEW: Embedding cache (optional KV namespace)
+  EMBEDDING_CACHE_KV?: KVNamespace;
+
+  // NEW: Metrics tracking (optional KV namespace)
+  METRICS_KV?: KVNamespace;
 }
 
 export interface EmbeddingResponse {

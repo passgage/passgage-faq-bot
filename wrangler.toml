@@ -16,10 +16,21 @@ index_name = "faq-index"
 # Environment variables
 [vars]
 SIMILARITY_THRESHOLD = "0.7"
+FUZZY_THRESHOLD = "0.6"
 TOP_K = "3"
 MAX_FAQs_RETURN = "5"
-ALLOWED_ORIGINS = "*"
+ALLOWED_ORIGINS = "*,https://passgage-faq-dashboard.pages.dev"
 RATE_LIMIT_MAX = "60"
+
+# KV namespace for embedding cache (Phase 2)
+[[kv_namespaces]]
+binding = "EMBEDDING_CACHE_KV"
+id = "566f2fd5a56a43d7af8bc024795d44c5"
+
+# KV namespace for metrics tracking (Phase 3)
+[[kv_namespaces]]
+binding = "METRICS_KV"
+id = "bf184103837f4a369076d229546719d0"
 
 # Optional: KV namespace for rate limiting
 # Uncomment to enable rate limiting
@@ -33,6 +44,7 @@ name = "passgage-faq-bot-production"
 
 [env.production.vars]
 SIMILARITY_THRESHOLD = "0.75"
+FUZZY_THRESHOLD = "0.65"
 TOP_K = "5"
 # Set your allowed origins in production
 # ALLOWED_ORIGINS = "https://passgage.com,https://app.passgage.com"
