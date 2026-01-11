@@ -38,11 +38,11 @@ import {
   getCacheSize,
 } from './cache/embedding-cache';
 import {
-  trackQuery,
   getMetricsSummary,
   getRecentQueries,
   clearMetrics,
 } from './analytics/metrics';
+import { trackFAQQuery } from './analytics/mixpanel';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -145,15 +145,14 @@ app.post('/api/ask', async (c) => {
     if (results.length === 0) {
       const responseTimeMs = Date.now() - startTime;
 
-      // Track metrics
-      trackQuery(c.env, {
-        timestamp: Date.now(),
+      // Track to Mixpanel
+      trackFAQQuery(c.env, {
         question: normalizedQuestion,
         success: false,
         cached,
         fuzzy: false,
         responseTimeMs,
-      }).catch((e) => console.error('Metrics error:', e));
+      }).catch((e) => console.error('Mixpanel error:', e));
 
       return c.json<AskResponse>({
         success: false,
@@ -175,9 +174,8 @@ app.post('/api/ask', async (c) => {
         category: r.faq.category,
       }));
 
-      // Track metrics
-      trackQuery(c.env, {
-        timestamp: Date.now(),
+      // Track to Mixpanel
+      trackFAQQuery(c.env, {
         question: normalizedQuestion,
         success: true,
         confidence: bestScore,
@@ -185,7 +183,8 @@ app.post('/api/ask', async (c) => {
         fuzzy: false,
         responseTimeMs,
         category: bestMatch.faq.category,
-      }).catch((e) => console.error('Metrics error:', e));
+        matchedQuestion: bestMatch.faq.question,
+      }).catch((e) => console.error('Mixpanel error:', e));
 
       return c.json<AskResponse>({
         success: true,
@@ -194,6 +193,11 @@ app.post('/api/ask', async (c) => {
         matchedQuestion: bestMatch.faq.question,
         category: bestMatch.faq.category,
         suggestions,
+        _metadata: {
+          cached,
+          responseTimeMs,
+          fuzzy: false,
+        },
       });
     }
 
@@ -206,9 +210,8 @@ app.post('/api/ask', async (c) => {
         category: r.faq.category,
       }));
 
-      // Track metrics
-      trackQuery(c.env, {
-        timestamp: Date.now(),
+      // Track to Mixpanel
+      trackFAQQuery(c.env, {
         question: normalizedQuestion,
         success: false,
         confidence: bestScore,
@@ -216,7 +219,8 @@ app.post('/api/ask', async (c) => {
         fuzzy: true,
         responseTimeMs,
         category: bestMatch.faq.category,
-      }).catch((e) => console.error('Metrics error:', e));
+        matchedQuestion: bestMatch.faq.question,
+      }).catch((e) => console.error('Mixpanel error:', e));
 
       return c.json<AskResponse>({
         success: false,
@@ -227,22 +231,26 @@ app.post('/api/ask', async (c) => {
         category: bestMatch.faq.category,
         message: `Şunu mu demek istediniz: "${bestMatch.faq.question}"?`,
         suggestions: otherSuggestions,
+        _metadata: {
+          cached,
+          responseTimeMs,
+          fuzzy: true,
+        },
       });
     }
 
     // No match - score too low
     const responseTimeMs = Date.now() - startTime;
 
-    // Track metrics
-    trackQuery(c.env, {
-      timestamp: Date.now(),
+    // Track to Mixpanel
+    trackFAQQuery(c.env, {
       question: normalizedQuestion,
       success: false,
       confidence: bestScore,
       cached,
       fuzzy: false,
       responseTimeMs,
-    }).catch((e) => console.error('Metrics error:', e));
+    }).catch((e) => console.error('Mixpanel error:', e));
 
     return c.json<AskResponse>({
       success: false,
@@ -253,6 +261,11 @@ app.post('/api/ask', async (c) => {
         id: r.faq.id,
         category: r.faq.category,
       })),
+      _metadata: {
+        cached,
+        responseTimeMs,
+        fuzzy: false,
+      },
     });
   } catch (error) {
     console.error('Error in /api/ask:', error);

@@ -30,6 +30,11 @@ export interface AskResponse {
   message?: string;
   fuzzy?: boolean; // NEW: Indicates fuzzy match (confidence between fuzzy and primary thresholds)
   suggestedQuestion?: string; // NEW: For "Did you mean?" scenarios
+  _metadata?: {
+    cached?: boolean;
+    responseTimeMs?: number;
+    fuzzy?: boolean;
+  };
 }
 
 export interface FAQSuggestion {
@@ -89,6 +94,9 @@ export interface Env {
 
   // NEW: Metrics tracking (optional KV namespace)
   METRICS_KV?: KVNamespace;
+
+  // Mixpanel token for server-side analytics tracking
+  MIXPANEL_TOKEN?: string;
 }
 
 export interface EmbeddingResponse {
