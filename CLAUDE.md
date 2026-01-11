@@ -313,6 +313,73 @@ Test bindings defined in `vitest.config.ts`:
 - Vectorize is in beta - API may change
 - **Data source**: CSV files are the source of truth; JSON is auto-generated via `npm run build:data`
 
+## Health & Status Monitoring
+
+The application provides two critical endpoints for monitoring:
+
+### Health Check - `/api/health`
+**Purpose**: Basic service availability check
+- No authentication required
+- Returns service status and timestamp
+- Use for: Uptime monitoring, load balancers, status pages
+
+**Response**:
+```json
+{
+  "status": "healthy",
+  "service": "passgage-faq-bot",
+  "timestamp": "2026-01-11T13:45:13.533Z"
+}
+```
+
+**Monitoring Setup**:
+```bash
+# Simple uptime check (every 5 minutes)
+*/5 * * * * curl -f https://passgage-faq-bot.passgage.workers.dev/api/health || alert
+
+# External monitoring services:
+# - UptimeRobot: https://uptimerobot.com
+# - Pingdom: https://pingdom.com
+# - Cloudflare Health Checks (in dashboard)
+```
+
+### Database Status - `/api/status`
+**Purpose**: Verify FAQ database initialization
+- No authentication required
+- Checks if Vectorize has been seeded with FAQs
+- Use for: Deployment verification, database health checks
+
+**Response**:
+```json
+{
+  "status": "ready|empty|error",
+  "initialized": true,
+  "message": "FAQ veritabanı yüklendi ve hazır",
+  "timestamp": "2026-01-11T13:45:13.783Z"
+}
+```
+
+**Status Values**:
+- `ready` - Database loaded and operational ✅
+- `empty` - Database empty, run seed script ⚠️
+- `error` - Error checking database ❌
+
+**Post-Deployment Verification**:
+```bash
+# After deploy, verify database is ready
+curl https://passgage-faq-bot.passgage.workers.dev/api/status | jq .
+
+# Expected: status = "ready", initialized = true
+# If empty: Run npm run seed to load FAQs
+```
+
+### Recommended Monitoring Strategy
+
+1. **Uptime Monitoring**: Check `/api/health` every 5 minutes
+2. **Database Monitoring**: Check `/api/status` after every deployment
+3. **Alert on**: status != "healthy" or initialized != true
+4. **Cloudflare Analytics**: Monitor request counts, error rates, latency
+
 ## Development Workflow
 
 ### Making Code Changes
