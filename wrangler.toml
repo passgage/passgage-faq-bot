@@ -43,12 +43,26 @@ id = "566f2fd5a56a43d7af8bc024795d44c5"
 [env.production]
 name = "passgage-faq-bot-production"
 
+# Workers AI binding (required for embeddings)
+[env.production.ai]
+binding = "AI"
+
+# Vectorize binding (required for vector search)
+[[env.production.vectorize]]
+binding = "VECTORIZE"
+index_name = "faq-index"
+
+# KV namespace for embedding cache
+[[env.production.kv_namespaces]]
+binding = "EMBEDDING_CACHE_KV"
+id = "566f2fd5a56a43d7af8bc024795d44c5"
+
 [env.production.vars]
 SIMILARITY_THRESHOLD = "0.75"
 FUZZY_THRESHOLD = "0.65"
 TOP_K = "5"
-# Set your allowed origins in production
-# ALLOWED_ORIGINS = "https://passgage.com,https://app.passgage.com"
+MAX_FAQs_RETURN = "5"
+ALLOWED_ORIGINS = "*"
 RATE_LIMIT_MAX = "100"
 
 # Important: Set API keys as secrets (not in wrangler.toml!)
