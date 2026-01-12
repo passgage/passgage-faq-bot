@@ -68,7 +68,9 @@ Soru 2;Açıklama 2;Çözüm 2;;;;;;;;;;;;;;;`;
     });
 
     it('should remove BOM if present', () => {
-      const csvWithBOM = '\uFEFF' + `Başlangıç;;;;;;;;;;;;;;;;;;
+      const csvWithBOM =
+        '\uFEFF' +
+        `Başlangıç;;;;;;;;;;;;;;;;;;
 ${';;;;;;;;;;;;;;;;'.repeat(12)}
 Başlıklar (A);;;;;;;;;;;;;;;;
 Uygulamaya Giriş Öncesi;Açıklama:;Çözüm;;;;;;;;;;;;;;;

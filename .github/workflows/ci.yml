@@ -29,6 +29,13 @@ jobs:
       - name: TypeScript type checking
         run: npm run typecheck
 
+      - name: Run tests
+        run: npm test
+
+      - name: Security audit
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
   deploy-preview:
     runs-on: ubuntu-latest
     needs: lint-and-typecheck

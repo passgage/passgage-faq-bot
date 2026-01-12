@@ -125,14 +125,18 @@ app.post('/api/ask', async (c) => {
 
     // Normalize the question for better matching (typos, informal Turkish)
     const normalizedQuestion = normalizeTurkish(question);
-    console.log(`Original: "${question}" → Normalized: "${normalizedQuestion}"`);
+    console.log(
+      `Original: "${question}" → Normalized: "${normalizedQuestion}"`
+    );
 
     // Generate embedding with cache (reduces cost by 60-80%)
     const { embedding: queryEmbedding, cached } = await getEmbeddingWithCache(
       c.env,
       normalizedQuestion
     );
-    console.log(`Embedding ${cached ? 'retrieved from cache' : 'generated fresh'}`);
+    console.log(
+      `Embedding ${cached ? 'retrieved from cache' : 'generated fresh'}`
+    );
 
     // Search for similar FAQs
     const topK = parseInt(c.env.TOP_K || '3');
@@ -204,11 +208,13 @@ app.post('/api/ask', async (c) => {
     // Fuzzy match - medium confidence (0.60-0.69)
     if (bestScore >= fuzzyThreshold) {
       const responseTimeMs = Date.now() - startTime;
-      const otherSuggestions: FAQSuggestion[] = results.slice(1, 3).map((r) => ({
-        question: r.faq.question,
-        id: r.faq.id,
-        category: r.faq.category,
-      }));
+      const otherSuggestions: FAQSuggestion[] = results
+        .slice(1, 3)
+        .map((r) => ({
+          question: r.faq.question,
+          id: r.faq.id,
+          category: r.faq.category,
+        }));
 
       // Track to Mixpanel
       trackFAQQuery(c.env, {

@@ -99,7 +99,7 @@ describe('API Endpoints', () => {
       const response = await SELF.fetch('http://localhost/api/ask', {
         method: 'OPTIONS',
         headers: {
-          'Origin': 'https://example.com',
+          Origin: 'https://example.com',
           'Access-Control-Request-Method': 'POST',
         },
       });

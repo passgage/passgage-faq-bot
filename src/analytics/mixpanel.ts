@@ -67,14 +67,18 @@ export async function trackFAQQuery(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'text/plain',
+        Accept: 'text/plain',
       },
       body: JSON.stringify([event]),
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('[Mixpanel] Failed to track event:', response.status, errorText);
+      console.error(
+        '[Mixpanel] Failed to track event:',
+        response.status,
+        errorText
+      );
     } else {
       console.log('[Mixpanel] Event tracked successfully');
     }

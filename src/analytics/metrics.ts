@@ -230,8 +230,11 @@ export async function getMetricsSummary(
       .slice(0, 5);
 
     // Period
-    const oldestDate = dailyMetrics[dailyMetrics.length - 1]?.date || today.toISOString().split('T')[0];
-    const newestDate = dailyMetrics[0]?.date || today.toISOString().split('T')[0];
+    const oldestDate =
+      dailyMetrics[dailyMetrics.length - 1]?.date ||
+      today.toISOString().split('T')[0];
+    const newestDate =
+      dailyMetrics[0]?.date || today.toISOString().split('T')[0];
 
     return {
       totalQueries,

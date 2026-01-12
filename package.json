@@ -15,7 +15,8 @@
     "seed": "tsx scripts/seed-from-json.ts",
     "format": "prettier --write \"src/**/*.{ts,js,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,js,json}\"",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "prepare": "husky"
   },
   "keywords": [
     "cloudflare",
@@ -35,6 +36,8 @@
     "@cloudflare/vitest-pool-workers": "^0.12.1",
     "@cloudflare/workers-types": "^4.20241218.0",
     "@types/node": "^22.10.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "tsx": "^4.7.0",
     "typescript": "^5.7.2",
@@ -43,5 +46,10 @@
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,js,json}": [
+      "prettier --write"
+    ]
   }
 }

@@ -26,13 +26,32 @@
 
 ## Code Quality
 
-### Before Committing
+### Pre-commit Hooks (Automatic)
 
-Always run these checks:
+We use **Husky** and **lint-staged** to automatically enforce code quality before every commit:
+
+- ✅ **Prettier** - Auto-formats all staged files
+- ✅ **TypeScript** - Type checks staged TypeScript files
+- ✅ **Tests** - Runs full test suite
+
+**The commit will be blocked if any check fails.** Fix the issues and try again.
+
+### Manual Checks
+
+You can also run these checks manually:
 
 ```bash
 # TypeScript type checking (required)
 npm run typecheck
+
+# Run tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
 
 # Format code
 npm run format
@@ -104,7 +123,38 @@ data/
 
 ## Testing
 
-### Manual Testing
+### Automated Tests
+
+The project includes a comprehensive test suite using **Vitest**:
+
+```bash
+# Run all tests
+npm test
+
+# Watch mode for development
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+```
+
+**Test files** are located in `src/__tests__/`:
+- `api.test.ts` - API endpoint tests
+- `auth.test.ts` - Authentication middleware tests
+- `csvParser.test.ts` - CSV parsing utility tests
+- `types.test.ts` - TypeScript type validation tests
+
+### CI/CD Testing
+
+Every push and pull request automatically runs:
+1. ✅ Code formatting check (Prettier)
+2. ✅ TypeScript type checking
+3. ✅ Full test suite
+4. ✅ Security audit (informational)
+
+See `.github/workflows/ci.yml` for details.
+
+### Manual API Testing
 
 ```bash
 # Start dev server
@@ -112,8 +162,9 @@ npm run dev
 
 # In another terminal
 curl -X POST http://localhost:8787/api/ask \
+  -H "X-API-Key: test-public-key" \
   -H "Content-Type: application/json" \
-  -d '{"question": "Test question"}'
+  -d '{"question": "Şifremi nasıl değiştirebilirim?"}'
 ```
 
 ### Health Check

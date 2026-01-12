@@ -199,10 +199,13 @@ export async function corsMiddleware(
   next: () => Promise<void>
 ): Promise<Response | void> {
   const origin = c.req.header('Origin') || '';
-  const allowedOrigins = c.env.ALLOWED_ORIGINS?.split(',').map(o => o.trim()) || ['*'];
+  const allowedOrigins = c.env.ALLOWED_ORIGINS?.split(',').map((o) =>
+    o.trim()
+  ) || ['*'];
 
   // Check if origin is allowed
-  const isAllowed = allowedOrigins.includes('*') || allowedOrigins.includes(origin);
+  const isAllowed =
+    allowedOrigins.includes('*') || allowedOrigins.includes(origin);
 
   if (isAllowed) {
     // Set CORS headers

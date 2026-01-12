@@ -277,7 +277,10 @@ describe('Authentication Middleware', () => {
         'Access-Control-Allow-Headers',
         'Content-Type, X-API-Key, Authorization'
       );
-      expect(ctx.header).toHaveBeenCalledWith('Access-Control-Max-Age', '86400');
+      expect(ctx.header).toHaveBeenCalledWith(
+        'Access-Control-Max-Age',
+        '86400'
+      );
     });
   });
 

@@ -38,7 +38,13 @@
       "Bash(git init:*)",
       "Bash(git branch:*)",
       "Bash(git rm:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(gh repo create:*)",
+      "Bash(gh run view:*)",
+      "Bash(npm run format:*)",
+      "Bash(npx husky init)",
+      "Bash(npm audit)",
+      "Bash([ -f CONTRIBUTING.md ])"
     ]
   }
 }
