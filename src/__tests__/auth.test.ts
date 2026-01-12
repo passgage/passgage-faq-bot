@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { Context } from 'hono';
 import {
   publicApiKeyAuth,
@@ -53,7 +53,7 @@ describe('Authentication Middleware', () => {
 
       expect(response).toBeInstanceOf(Response);
       expect(response?.status).toBe(401);
-      const data = await response?.json();
+      const data = (await response?.json()) as any;
       expect(data.error).toBe('API key required');
       expect(next).not.toHaveBeenCalled();
     });
@@ -69,7 +69,7 @@ describe('Authentication Middleware', () => {
 
       expect(response).toBeInstanceOf(Response);
       expect(response?.status).toBe(403);
-      const data = await response?.json();
+      const data = (await response?.json()) as any;
       expect(data.error).toBe('Invalid API key');
       expect(next).not.toHaveBeenCalled();
     });
@@ -117,7 +117,7 @@ describe('Authentication Middleware', () => {
 
       expect(response).toBeInstanceOf(Response);
       expect(response?.status).toBe(401);
-      const data = await response?.json();
+      const data = (await response?.json()) as any;
       expect(data.error).toBe('Admin API key required');
       expect(next).not.toHaveBeenCalled();
     });
@@ -133,7 +133,7 @@ describe('Authentication Middleware', () => {
 
       expect(response).toBeInstanceOf(Response);
       expect(response?.status).toBe(403);
-      const data = await response?.json();
+      const data = (await response?.json()) as any;
       expect(data.error).toBe('Invalid admin API key');
       expect(next).not.toHaveBeenCalled();
     });
@@ -253,7 +253,7 @@ describe('Authentication Middleware', () => {
         { Origin: 'https://passgage.com' },
         { ALLOWED_ORIGINS: '*' }
       );
-      ctx.req.method = 'OPTIONS';
+      (ctx.req as any).method = 'OPTIONS';
       const next = vi.fn();
 
       const response = await corsMiddleware(ctx, next);
@@ -317,7 +317,7 @@ describe('Authentication Middleware', () => {
 
       expect(response).toBeInstanceOf(Response);
       expect(response?.status).toBe(403);
-      const data = await response?.json();
+      const data = (await response?.json()) as any;
       expect(data.error).toBe('Access denied');
       expect(next).not.toHaveBeenCalled();
     });

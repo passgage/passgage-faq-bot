@@ -261,7 +261,8 @@ kelime1 kelime2 kelime3 kelime4 kelime5 kelime6 kelime7;Açıklama;Çözüm`;
 
       const result = parseChatbotMobil(csv);
 
-      expect(result[0].keywords.length).toBeLessThanOrEqual(5);
+      expect(result.length).toBeGreaterThan(0);
+      expect(result[0]?.keywords?.length).toBeLessThanOrEqual(5);
     });
 
     it('should convert keywords to lowercase', () => {

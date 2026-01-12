@@ -34,37 +34,43 @@ describe('TypeScript Type Definitions', () => {
   describe('SearchResult Type', () => {
     it('should accept valid search results', () => {
       const result: SearchResult = {
-        id: 'faq-001',
-        question: 'Test question',
-        answer: 'Test answer',
-        category: 'test',
-        confidence: 0.95,
-        keywords: ['test'],
+        faq: {
+          id: 'faq-001',
+          question: 'Test question',
+          answer: 'Test answer',
+          category: 'test',
+          keywords: ['test'],
+        },
+        score: 0.95,
       };
 
-      expect(result.confidence).toBe(0.95);
-      expect(result.id).toBe('faq-001');
+      expect(result.score).toBe(0.95);
+      expect(result.faq.id).toBe('faq-001');
     });
 
     it('should handle confidence scores correctly', () => {
       const lowConfidence: SearchResult = {
-        id: 'faq-002',
-        question: 'Question',
-        answer: 'Answer',
-        category: 'test',
-        confidence: 0.1,
+        faq: {
+          id: 'faq-002',
+          question: 'Question',
+          answer: 'Answer',
+          category: 'test',
+        },
+        score: 0.1,
       };
 
       const highConfidence: SearchResult = {
-        id: 'faq-003',
-        question: 'Question',
-        answer: 'Answer',
-        category: 'test',
-        confidence: 1.0,
+        faq: {
+          id: 'faq-003',
+          question: 'Question',
+          answer: 'Answer',
+          category: 'test',
+        },
+        score: 1.0,
       };
 
-      expect(lowConfidence.confidence).toBe(0.1);
-      expect(highConfidence.confidence).toBe(1.0);
+      expect(lowConfidence.score).toBe(0.1);
+      expect(highConfidence.score).toBe(1.0);
     });
   });
 

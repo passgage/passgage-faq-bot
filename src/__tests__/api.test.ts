@@ -1,4 +1,5 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect } from 'vitest';
+// @ts-ignore - cloudflare:test is available in Cloudflare Workers test environment
 import { SELF } from 'cloudflare:test';
 
 describe('API Endpoints', () => {
