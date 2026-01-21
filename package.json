@@ -42,7 +42,7 @@
     "tsx": "^4.7.0",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8",
-    "wrangler": "^3.99.0"
+    "wrangler": "^3.114.17"
   },
   "engines": {
     "node": ">=20.0.0"
